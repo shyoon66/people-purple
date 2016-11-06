@@ -38,5 +38,6 @@
 			}
 		</script>
 	</div>
+	<div>${userInfo.nickname}</div>
 </body>
 </html>

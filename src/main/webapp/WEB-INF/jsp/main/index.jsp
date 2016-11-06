@@ -25,7 +25,7 @@
 				Kakao.API.request({
 					url: '/v1/user/me',
 					success: function(res) {
-						console.log(res);
+						location.href = '/purple/main/main?id=' + res.id + '&nickname=' + res.properties.nickname;
 					}
 				});
 			},
