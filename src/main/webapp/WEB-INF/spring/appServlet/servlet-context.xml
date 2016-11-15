@@ -12,6 +12,8 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 	
+	<default-servlet-handler /> 
+	
 	<annotation-driven>
     	<argument-resolvers>
             <beans:bean class="purple.common.resolver.CustomMapArgumentResolver"></beans:bean>       

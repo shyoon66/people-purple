@@ -6,11 +6,12 @@
 <hibernate-configuration>
     <session-factory>
         <!-- Database connection settings -->
-        <property name="connection.driver_class">org.apache.derby.jdbc.ClientDriver</property>
-        <property name="connection.url">jdbc:derby://localhost:1527/HibernateDb;create=true</property>
-        <property name="connection.username">user</property>
-        <property name="connection.password">password</property>
-        <property name="dialect">org.hibernate.dialect.DerbyDialect</property>
+        <property name="connection.url">jdbc:cubrid:localhost:30000:people-purple:::?charset=UTF-8</property>
+        <property name="connection.username">dba</property>
+        <property name="connection.password">purple</property>
+        <property name="connection.driver_class">cubrid.jdbc.driver.CUBRIDDriver</property>
+        <property name="dialect">org.hibernate.dialect.CUBRIDDialect</property>
+        <property name="show_sql">true</property>
  
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">1</property>

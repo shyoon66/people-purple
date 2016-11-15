@@ -42,7 +42,7 @@ public class MainController {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("id", id);
 		map.put("nickname", nickname);
-		model.addAttribute("userInfo",map);
+		model.addAttribute("userInfo", map);
 		
 		return "main/main";
 	}
