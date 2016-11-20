@@ -4,6 +4,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -28,7 +30,7 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "main", method = RequestMethod.GET)
-	public String main(@RequestParam(value = "id") String id, @RequestParam(value = "nickname") String nickname, CommandMap commandMap, Model model) {
+	public String main(@RequestParam(value = "id") String id, @RequestParam(value = "nickname") String nickname, HttpServletRequest request, CommandMap commandMap, Model model) {
 		try {
 			if(nickname != null){
 				nickname = new String(nickname.getBytes("8859_1"),"UTF-8"); // getBytes("8859_1") 
@@ -38,6 +40,9 @@ public class MainController {
 		}
 		
 		logger.info("id : {}, nickname : {}", id, nickname);
+		
+		request.getSession().setAttribute("id", id);
+		request.getSession().setAttribute("nickname", nickname);
 		
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("id", id);

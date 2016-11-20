@@ -30,7 +30,6 @@
 	<script src="../resources/assets/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="../resources/assets/js/material.min.js"></script>
 	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-	<script src="../resources/js/main/main.js"></script>
 
 	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
 	<script src="../resources/assets/js/nouislider.min.js" type="text/javascript"></script>
@@ -112,77 +111,66 @@
 	<div class="main main-raised">
 		<!-- <div class="section"> -->
 	        <div class="container">
-	        	<div style="margin-bottom: 20px;">
-	        		<button class="btn btn-primary" onclick="fnLocationInsertPartyPage();">모임 만들기</button>
-	        	</div>
 	        	<div class="content">
 					<table class="table">
-					    <thead>
-					        <tr>
-					            <th class="text-center">#</th>
-					            <th>Name</th>
-					            <th>Job Position</th>
-					            <th>Since</th>
-					            <th class="text-right">Salary</th>
-					            <th class="text-right">Actions</th>
-					        </tr>
-					    </thead>
-					    <tbody>
-					        <tr>
-					            <td class="text-center">1</td>
-					            <td>Andrew Mike</td>
-					            <td>Develop</td>
-					            <td>2013</td>
-					            <td class="text-right">&euro; 99,225</td>
-					            <td class="td-actions text-right">
-					                <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
-					                    <i class="fa fa-user"></i>
-					                </button>
-					                <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
-					                    <i class="fa fa-edit"></i>
-					                </button>
-					                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-					                    <i class="fa fa-times"></i>
-					                </button>
-					            </td>
-					        </tr>
-					        <tr>
-					            <td class="text-center">2</td>
-					            <td>John Doe</td>
-					            <td>Design</td>
-					            <td>2012</td>
-					            <td class="text-right">&euro; 89,241</td>
-					            <td class="td-actions text-right">
-					                <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
-					                    <i class="fa fa-user"></i>
-					                </button>
-					                <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
-					                    <i class="fa fa-edit"></i>
-					                </button>
-					                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-					                    <i class="fa fa-times"></i>
-					                </button>
-					            </td>
-					        </tr>
-					        <tr>
-					            <td class="text-center">3</td>
-					            <td>Alex Mike</td>
-					            <td>Design</td>
-					            <td>2010</td>
-					            <td class="text-right">&euro; 92,144</td>
-					            <td class="td-actions text-right">
-					                <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
-					                    <i class="fa fa-user"></i>
-					                </button>
-					                <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
-					                    <i class="fa fa-edit"></i>
-					                </button>
-					                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-					                    <i class="fa fa-times"></i>
-					                </button>
-					            </td>
-					        </tr>
-					    </tbody>
+				    	<tr>
+				            <th class="text-center">닉네임</th>
+							<td class="text-right"><input type="text" id="nickname" name="nickname" class="form-control" value="${userinfo.nickname}" readonly="readonly"></td>
+				        </tr>
+				        <tr>
+				            <td class="text-center">1</td>
+				            <td>Andrew Mike</td>
+				            <td>Develop</td>
+				            <td>2013</td>
+				            <td class="text-right">&euro; 99,225</td>
+				            <td class="td-actions text-right">
+				                <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
+				                    <i class="fa fa-user"></i>
+				                </button>
+				                <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
+				                    <i class="fa fa-edit"></i>
+				                </button>
+				                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+				                    <i class="fa fa-times"></i>
+				                </button>
+				            </td>
+				        </tr>
+				        <tr>
+				            <td class="text-center">2</td>
+				            <td>John Doe</td>
+				            <td>Design</td>
+				            <td>2012</td>
+				            <td class="text-right">&euro; 89,241</td>
+				            <td class="td-actions text-right">
+				                <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
+				                    <i class="fa fa-user"></i>
+				                </button>
+				                <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
+				                    <i class="fa fa-edit"></i>
+				                </button>
+				                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+				                    <i class="fa fa-times"></i>
+				                </button>
+				            </td>
+				        </tr>
+				        <tr>
+				            <td class="text-center">3</td>
+				            <td>Alex Mike</td>
+				            <td>Design</td>
+				            <td>2010</td>
+				            <td class="text-right">&euro; 92,144</td>
+				            <td class="td-actions text-right">
+				                <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
+				                    <i class="fa fa-user"></i>
+				                </button>
+				                <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
+				                    <i class="fa fa-edit"></i>
+				                </button>
+				                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+				                    <i class="fa fa-times"></i>
+				                </button>
+				            </td>
+				        </tr>
 					</table>
 				</div>
 		    </div>
@@ -234,7 +222,7 @@
 </footer>
 
 </body>
-	<script>	
+	<script>
 		$().ready(function(){
 			$(window).on('scroll', materialKit.checkScrollForTransparentNavbar);
 		});

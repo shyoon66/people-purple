@@ -9,7 +9,7 @@
 	<link rel="icon" type="image/png" href="../assets/img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Sign Up Page - Material Kit by Creative Tim</title>
+	<title>people-purple</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
@@ -29,6 +29,7 @@
 	<script src="../resources/assets/js/jquery.min.js" type="text/javascript"></script>
 	<script src="../resources/assets/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="../resources/assets/js/material.min.js"></script>
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
 	<script src="../resources/assets/js/nouislider.min.js" type="text/javascript"></script>
@@ -51,10 +52,10 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
         		</button>
-        		<a class="navbar-brand" href="http://www.creative-tim.com">Creative Tim</a>
+        		<a class="navbar-brand" href="http://www.creative-tim.com">people-purple</a>
         	</div>
 
-        	<div class="collapse navbar-collapse" id="navigation-example">
+<!--         	<div class="collapse navbar-collapse" id="navigation-example">
         		<ul class="nav navbar-nav navbar-right">
 					<li>
     					<a href="../components-documentation.html" target="_blank">
@@ -82,7 +83,7 @@
 						</a>
 		            </li>
         		</ul>
-        	</div>
+        	</div> -->
     	</div>
     </nav>
 
@@ -94,7 +95,7 @@
 						<div class="card card-signup">
 							<form class="form" method="" action="">
 								<div class="header header-primary text-center">
-									<h4>Sign Up</h4>
+									<h4>로그인</h4>
 									<div class="social-line">
 										<a href="#pablo" class="btn btn-simple btn-just-icon">
 											<i class="fa fa-facebook-square"></i>
@@ -107,7 +108,33 @@
 										</a>
 									</div>
 								</div>
-								<p class="text-divider">Or Be Classical</p>
+								<div class="content">
+									<a id="kakao-login-btn"></a>
+									<a href="http://alpha-developers.kakao.com/logout"></a>
+								
+									<script type='text/javascript'>
+										//<![CDATA[
+										// 사용할 앱의 JavaScript 키를 설정해 주세요.
+										Kakao.init('a05ee4a95a2c2df4b1da1b7e43af8096');
+										// 카카오 로그인 버튼을 생성합니다.
+										Kakao.Auth.createLoginButton({
+											container : '#kakao-login-btn',
+											success : function(authObj) {
+												Kakao.API.request({
+													url: '/v1/user/me',
+													success: function(res) {
+														location.href = '/purple/main/main?id=' + res.id + '&nickname=' + res.properties.nickname;
+													}
+												});
+											},
+											fail : function(err) {
+												alert(JSON.stringify(err));
+											}
+										});
+										//]]>
+									</script>
+								</div>
+							<!-- 								<p class="text-divider">Or Be Classical</p>
 								<div class="content">
 
 									<div class="input-group">
@@ -131,18 +158,18 @@
 										<input type="password" placeholder="Password..." class="form-control" />
 									</div>
 
-									<!-- If you want to add a checkbox to this form, uncomment this code
+									If you want to add a checkbox to this form, uncomment this code
 
 									<div class="checkbox">
 										<label>
 											<input type="checkbox" name="optionsCheckboxes" checked>
 											Subscribe to newsletter
 										</label>
-									</div> -->
+									</div>
 								</div>
 								<div class="footer text-center">
 									<a href="#pablo" class="btn btn-simple btn-primary btn-lg">Get Started</a>
-								</div>
+								</div> -->
 							</form>
 						</div>
 					</div>
@@ -151,7 +178,7 @@
 
 			<footer class="footer">
 		        <div class="container">
-		            <nav class="pull-left">
+<!-- 		            <nav class="pull-left">
 						<ul>
 							<li>
 								<a href="http://www.creative-tim.com">
@@ -174,10 +201,10 @@
 								</a>
 							</li>
 						</ul>
-		            </nav>
-		            <div class="copyright pull-right">
+		            </nav> -->
+<!-- 		            <div class="copyright pull-right">
 		                &copy; 2016, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com" target="_blank">Creative Tim</a>
-		            </div>
+		            </div> -->
 		        </div>
 		    </footer>
 		</div>
