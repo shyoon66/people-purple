@@ -112,66 +112,27 @@
 		<!-- <div class="section"> -->
 	        <div class="container">
 	        	<div class="content">
-					<table class="table">
-				    	<tr>
-				            <th class="text-center">닉네임</th>
-							<td class="text-right"><input type="text" id="nickname" name="nickname" class="form-control" value="${userinfo.nickname}" readonly="readonly"></td>
-				        </tr>
-				        <tr>
-				            <td class="text-center">1</td>
-				            <td>Andrew Mike</td>
-				            <td>Develop</td>
-				            <td>2013</td>
-				            <td class="text-right">&euro; 99,225</td>
-				            <td class="td-actions text-right">
-				                <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
-				                    <i class="fa fa-user"></i>
-				                </button>
-				                <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
-				                    <i class="fa fa-edit"></i>
-				                </button>
-				                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-				                    <i class="fa fa-times"></i>
-				                </button>
-				            </td>
-				        </tr>
-				        <tr>
-				            <td class="text-center">2</td>
-				            <td>John Doe</td>
-				            <td>Design</td>
-				            <td>2012</td>
-				            <td class="text-right">&euro; 89,241</td>
-				            <td class="td-actions text-right">
-				                <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
-				                    <i class="fa fa-user"></i>
-				                </button>
-				                <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
-				                    <i class="fa fa-edit"></i>
-				                </button>
-				                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-				                    <i class="fa fa-times"></i>
-				                </button>
-				            </td>
-				        </tr>
-				        <tr>
-				            <td class="text-center">3</td>
-				            <td>Alex Mike</td>
-				            <td>Design</td>
-				            <td>2010</td>
-				            <td class="text-right">&euro; 92,144</td>
-				            <td class="td-actions text-right">
-				                <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
-				                    <i class="fa fa-user"></i>
-				                </button>
-				                <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
-				                    <i class="fa fa-edit"></i>
-				                </button>
-				                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-				                    <i class="fa fa-times"></i>
-				                </button>
-				            </td>
-				        </tr>
-					</table>
+					<form class="contact-form">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group label-floating">
+									<label class="control-label">닉네임</label>
+									<input type="text" id="nickname" name="nickname" class="form-control" value="${userInfo.nickname}" readonly="readonly" />
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group label-floating">
+									<label class="control-label">Your Email</label>
+									<input type="email" class="form-control">
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group label-floating">
+							<label class="control-label">Your Messge</label>
+							<textarea class="form-control" rows="4"></textarea>
+						</div>
+					</form>
 				</div>
 		    </div>
 	<!-- 	</div> -->

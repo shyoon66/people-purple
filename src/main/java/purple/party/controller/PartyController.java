@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import purple.common.common.CommandMap;
 
@@ -25,7 +24,7 @@ public class PartyController {
 	public String partyInsert(HttpServletRequest request, CommandMap commandMap, Model model) {
 		Map<String, String> map = new HashMap<String, String>();
 		
-		logger.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" + request.getSession().toString());
+		map.put("nickname", request.getSession().getAttribute("nickname").toString());
 		model.addAttribute("userInfo", map);
 	
 		return "party/partyInsert";

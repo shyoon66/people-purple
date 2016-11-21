@@ -45,8 +45,12 @@ public class MainController {
 		request.getSession().setAttribute("nickname", nickname);
 		
 		Map<String, String> map = new HashMap<String, String>();
+		
 		map.put("id", id);
 		map.put("nickname", nickname);
+		
+		//commandMap.put("id", id);
+		//commandMap.put("nickname", nickname);
 		model.addAttribute("userInfo", map);
 		
 		return "main/main";
