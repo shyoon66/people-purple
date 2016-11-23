@@ -30,6 +30,8 @@
 	<script src="../resources/assets/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="../resources/assets/js/material.min.js"></script>
 	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+	<script src="../resources/js/party/partyInsert.js"></script>
+	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script> -->
 
 	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
 	<script src="../resources/assets/js/nouislider.min.js" type="text/javascript"></script>
@@ -39,18 +41,6 @@
 
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="../resources/assets/js/material-kit.js" type="text/javascript"></script>
-	
-	<script type='text/javascript'>
-		// 사용할 앱의 JavaScript 키를 설정해 주세요.
-		Kakao.init('a05ee4a95a2c2df4b1da1b7e43af8096');
-		
-		Kakao.Auth.getStatus(function(statusObj) {
-			if(statusObj.status == "not_connected") {
-				alert("잘못된 접근입니다.");
-				location.href = "http://localhost:8080/purple/main/";
-			}
-		});
-	</script>
 </head>
 
 <body class="tutorial-page">
@@ -73,13 +63,6 @@
 			    ${userInfo.nickname}
 			</div>
 			<button class="btn btn-primary" onclick="fnLogout();">로그아웃</button>
-			<script type='text/javascript'>
-				function fnLogout() {
-					Kakao.Auth.logout(function() {
-						location.href = "http://localhost:8080/purple/main/";
-					});
-				}
-			</script>
 		</div>
 	</div>
 
@@ -102,7 +85,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3">
-					<h1 class="title text-center">Tutorial</h1>
+					<h1 class="title text-center">people-purple</h1>
 				</div>
 			</div>
 		</div>
@@ -114,24 +97,53 @@
 	        	<div class="content">
 					<form class="contact-form">
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-2">
 								<div class="form-group label-floating">
 									<label class="control-label">닉네임</label>
 									<input type="text" id="nickname" name="nickname" class="form-control" value="${userInfo.nickname}" readonly="readonly" />
 								</div>
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-4">
 								<div class="form-group label-floating">
-									<label class="control-label">Your Email</label>
-									<input type="email" class="form-control">
+									<label class="control-label">이메일 주소</label>
+									<input type="text" id="email" name="email" class="form-control">
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group label-floating">
+									<label class="control-label">모임종류</label>
+									<select id="party_kind" name="party_kind" class="form-control">
+										<option value="tour">여행</option>
+										<option value="exercise">운동</option>
+										<option value="reading">독서</option>
+										<option value="food">맛집투어</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div class="form-group label-floating">
+									<label class="control-label">인원수</label>
+									<input type="text" id="num_people" name="num_people" class="form-control" value="" />
 								</div>
 							</div>
 						</div>
-
-						<div class="form-group label-floating">
-							<label class="control-label">Your Messge</label>
-							<textarea class="form-control" rows="4"></textarea>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group label-floating">
+									<label class="control-label">제목</label>
+									<input type="text" id="title" name="title" class="form-control">
+								</div>
+							</div>
 						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group label-floating">
+									<label class="control-label">내용</label>
+									<textarea id="content" name="content" class="form-control" rows="6"></textarea>
+								</div>
+							</div>
+						</div>
+						<div id="map" style="width: 1140px; height: 400px; background: yellow; margin-right: 10px; margin-bottom: 5px;"></div>
 					</form>
 				</div>
 		    </div>
@@ -183,9 +195,4 @@
 </footer>
 
 </body>
-	<script>
-		$().ready(function(){
-			$(window).on('scroll', materialKit.checkScrollForTransparentNavbar);
-		});
-</script>
 </html>

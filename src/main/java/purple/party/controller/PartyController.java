@@ -20,7 +20,7 @@ public class PartyController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(PartyController.class);
 	
-	@RequestMapping(value = "/partyInsert", method = RequestMethod.GET)
+	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public String partyInsert(HttpServletRequest request, CommandMap commandMap, Model model) {
 		Map<String, String> map = new HashMap<String, String>();
 		

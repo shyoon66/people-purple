@@ -46,9 +46,9 @@
 		Kakao.init('a05ee4a95a2c2df4b1da1b7e43af8096');
 		
 		Kakao.Auth.getStatus(function(statusObj) {
-			if(statusObj.status == "not_connected") {
-				alert("잘못된 접근입니다.");
-				location.href = "http://localhost:8080/purple/main/";
+			if(statusObj.status == 'not_connected') {
+				alert('잘못된 접근입니다.');
+				location.href = 'http://localhost:8080/purple/main/';
 			}
 		});
 	</script>
@@ -103,7 +103,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3">
-					<h1 class="title text-center">Tutorial</h1>
+					<h1 class="title text-center">people-purple</h1>
 				</div>
 			</div>
 		</div>

@@ -4,5 +4,5 @@ script.type = 'text/javascript';
 document.getElementsByTagName('head')[0].appendChild(script);
 
 function fnLocationInsertPartyPage() {
-	location.href = '/purple/party/partyInsert';
+	location.href = '/purple/party/insert';
 }
