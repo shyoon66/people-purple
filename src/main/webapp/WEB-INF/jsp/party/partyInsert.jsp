@@ -25,13 +25,16 @@
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link href="../resources/assets/css/demo.css" rel="stylesheet" />
 	
+	<!-- daumeditor CSS -->
+	<link rel="stylesheet" href="../resources/daumeditor/css/editor.css" type="text/css"/>
+	
 	<!--   Core JS Files   -->
 	<script src="../resources/assets/js/jquery.min.js" type="text/javascript"></script>
 	<script src="../resources/assets/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="../resources/assets/js/material.min.js"></script>
 	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+	<script src="../resources/daumeditor/js/editor_loader.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../resources/js/party/partyInsert.js"></script>
-	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script> -->
 
 	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
 	<script src="../resources/assets/js/nouislider.min.js" type="text/javascript"></script>
@@ -95,7 +98,7 @@
 		<!-- <div class="section"> -->
 	        <div class="container">
 	        	<div class="content">
-					<form class="contact-form">
+					<form id="frm" name="frm" class="contact-form">
 						<div class="row">
 							<div class="col-md-2">
 								<div class="form-group label-floating">
@@ -109,7 +112,7 @@
 									<input type="text" id="email" name="email" class="form-control">
 								</div>
 							</div>
-							<div class="col-md-4">
+							<div class="col-md-2">
 								<div class="form-group label-floating">
 									<label class="control-label">모임종류</label>
 									<select id="party_kind" name="party_kind" class="form-control">
@@ -117,6 +120,29 @@
 										<option value="exercise">운동</option>
 										<option value="reading">독서</option>
 										<option value="food">맛집투어</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div class="form-group label-floating">
+									<label class="control-label">지역</label>
+									<select id="party_kind" name="party_kind" class="form-control">
+										<option value="seoul">서울</option>
+										<option value="incheon">인천</option>
+										<option value="daejeon">대전</option>
+										<option value="gwangju">광주</option>
+										<option value="daegu">대구</option>
+										<option value="ulsan">울산</option>
+										<option value="busan">부산</option>
+										<option value="gyeonggi">경기도</option>
+										<option value="gangwon">강원도</option>
+										<option value="chungcheongbuk">충청북도</option>
+										<option value="chungcheongnam">충청남도</option>
+										<option value="jeollabuk">전라북도</option>
+										<option value="jeollanam">전라남도</option>
+										<option value="gyeongsangbuk">경상북도</option>
+										<option value="gyeongsangnam">경상남도</option>
+										<option value="jeju">제주도</option>
 									</select>
 								</div>
 							</div>
@@ -131,19 +157,25 @@
 							<div class="col-md-12">
 								<div class="form-group label-floating">
 									<label class="control-label">제목</label>
-									<input type="text" id="title" name="title" class="form-control">
+									<input type="text" id="title" name="title" class="form-control" value="" />
 								</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group label-floating">
-									<label class="control-label">내용</label>
-									<textarea id="content" name="content" class="form-control" rows="6"></textarea>
+							        <!-- 에디터프레임호출 영역 -->
+							        <div id="editor_frame"></div>
+							        <!-- 실제 값이 담겨져서 넘어갈 textarea 태그 -->
+							        <textarea name="daumeditor" id="daumeditor" rows="10" cols="100" style="display: none;"></textarea>
 								</div>
 							</div>
 						</div>
-						<div id="map" style="width: 1140px; height: 400px; background: yellow; margin-right: 10px; margin-bottom: 5px;"></div>
+						<div id="map" style="width: 1140px; height: 400px; margin-right: 10px; margin-bottom: 5px;"></div>
+						<div>
+							<input type="button" id="save_button" class="btn btn-primary" value="저장"/>
+							<input type="button" id="cancle_btn" class="btn btn-primary" value="취소"/>
+						</div>
 					</form>
 				</div>
 		    </div>
