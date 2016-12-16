@@ -11,7 +11,16 @@ $(document).ready(function () {
 	Kakao.init('a05ee4a95a2c2df4b1da1b7e43af8096');
 	
 	fnGetStatus();
-	
+	fnDaumEditorInit();
+     
+    //form submit 버튼 클릭
+    $("#save_button").click(function() {
+        //다음에디터가 포함된 form submit
+        Editor.save();
+    })
+});
+
+function fnDaumEditorInit() {
     $.ajax({
         url : "../resources/daumeditor/editor_frame.html",
         success : function(data){
@@ -71,14 +80,8 @@ $(document).ready(function () {
             //에디터내에 환경설정 적용하기
             new Editor(config);
         }
-    });
-     
-    //form submit 버튼 클릭
-    $("#save_button").click(function() {
-        //다음에디터가 포함된 form submit
-        Editor.save();
-    })
-});
+    });	
+}
 
 //Editor.save() 호출 한 다음에 validation 검증을 위한 함수 
 //validation 체크해줄 입력폼들을 이 함수에 추가 지정해줍니다.

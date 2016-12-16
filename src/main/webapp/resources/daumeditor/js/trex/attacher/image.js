@@ -46,8 +46,9 @@ TrexConfig.addAttacher(
 		boxonly: _FALSE,
 		wysiwygonly: _TRUE,
 		objattr: {},
-		features: { left:250, top:65, width:797, height:644 },
-		popPageUrl: "#host#path/pages/trex/image.html"
+		features: { left:250, top:65, width:350, height:300 },
+		popPageUrl: "../common/image"
+		/*popPageUrl: "#host#path/pages/trex/image.html"*/
 	},
 	function(root){
 		var _config = TrexConfig.getAttacher("image", root);
@@ -81,7 +82,7 @@ Trex.Attacher.Image = Trex.Class.create({
 		data.imageurl = this.encodeSpaceInUrl(data.imageurl);
 		data.originalurl = this.encodeSpaceInUrl(data.originalurl);
 		data.attachurl = this.encodeSpaceInUrl(data.attachurl);
-		data.thumburl = data.thumburl || data.imageurl.replace(/\/image\//gm, '/P150x100/');
+		//data.thumburl = data.thumburl || data.imageurl.replace(/\/image\//gm, '/P150x100/');
 		  
 		if(!data.dispElId) {
 			data.dispElId = Trex.Util.getDispElId();
@@ -133,7 +134,8 @@ Trex.Attachment.Image = Trex.Class.create({
 	getFieldAttr: function(data) {
 		return {
 			name: 'tx_attach_image', 
-			value: [data.thumburl, data.imageurl, data.originalurl, data.exifurl, data.filename, data.filesize].join('|')
+			value: [data.filename, data.filesize].join('|')
+			/*value: [data.thumburl, data.imageurl, data.originalurl, data.exifurl, data.filename, data.filesize].join('|')*/
 		};
 	},
 	getBoxAttr: function(data) {

@@ -33,7 +33,7 @@
 	<script src="../resources/assets/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="../resources/assets/js/material.min.js"></script>
 	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-	<script src="../resources/daumeditor/js/editor_loader.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../resources/daumeditor/js/editor_loader.js" type="text/javascript"></script>
 	<script src="../resources/js/party/partyInsert.js"></script>
 
 	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->

@@ -23,7 +23,7 @@ public class MainController {
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index(Model model) {
+	public String index(CommandMap commandMap, Model model) {
 		logger.info("Welcome home!");
 	
 		return "main/index";

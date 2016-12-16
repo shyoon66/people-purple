@@ -1,15 +1,16 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Daum에디터 - 이미지 첨부</title> 
-<script src="../../js/popup.js" type="text/javascript" charset="utf-8"></script>
-<link rel="stylesheet" href="../../css/popup.css" type="text/css"  charset="utf-8"/>
+<script src="../resources/daumeditor/js/popup.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="../resources/daumeditor/css/popup.css" type="text/css"  charset="utf-8"/>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="../../js/trex/jquery.form.js"></script>
+<script type="text/javascript" src="../resources/daumeditor/js/trex/jquery.form.js"></script>
 <script type="text/javascript">
 // <![CDATA[
-	
 	$(function(){
         $("#saveBtn").click(function(){
             $("#frm").submit();
@@ -27,7 +28,8 @@
                 return true;
             },
             success: function(response, status){
-                //성공후 서버에서 받은 데이터 처리
+                alert("!!!!");
+            	//성공후 서버에서 받은 데이터 처리
                 done(response);
             },
             error: function(){
@@ -41,8 +43,19 @@
         if (typeof(execAttach) == 'undefined') { //Virtual Function
             return;
         }
-        var response_object = $.parseJSON( response );
-        execAttach(response_object);
+        
+        var _mockdata = {
+	        'filename': response.filename,
+	        'filesize': 1024
+/* 	        'imageurl': fileInfo.imageurl,	        
+	        'imagealign': fileInfo.imagealign,
+	        'originalurl': fileInfo.originalurl,
+	        'thumburl': fileInfo.thumburl */
+       	};
+        
+        //var response_object = $.parseJSON( response );
+        //console.log(response_object);
+        execAttach(_mockdata);
         closeWindow();
     }
  
