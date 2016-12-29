@@ -98,7 +98,7 @@ function validForm(editor) {
 //validForm 함수까지 true값을 받으면 이어서 form submit을 시켜주는  setForm함수
 function setForm(editor) {
     var content = editor.getContent();
-    $("#daumeditor").val(content)
+    $("#daumeditor").val(content);
     return true;
 }
 
@@ -118,9 +118,26 @@ function fnLogout() {
 }
 
 function myMap() {
-  var mapCanvas = document.getElementById("map");
-  var mapOptions = {
-    center: new google.maps.LatLng(51.5, -0.2), zoom: 10
-  };
-  var map = new google.maps.Map(mapCanvas, mapOptions);
+	var myLatLng = {lat: 51.5, lng: -0.2};
+	var mapCanvas = document.getElementById("map");
+	var mapOptions = {
+		zoom: 10,
+		center: myLatLng
+	};
+	var map = new google.maps.Map(mapCanvas, mapOptions);
+  
+	var marker = new google.maps.Marker({
+		position: myLatLng,
+	    map: map,
+	    draggable: true
+	});
+	marker.addListener('click', toggleBounce);
+}
+
+function toggleBounce() {
+	if (marker.getAnimation() !== null) {
+		marker.setAnimation(null);
+	} else {
+		marker.setAnimation(google.maps.Animation.BOUNCE);
+	}
 }
