@@ -12,6 +12,50 @@
 	<title>people-purple</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+	
+	<style>
+		.controls {
+		  margin-top: 10px;
+		  border: 1px solid transparent;
+		  border-radius: 2px 0 0 2px;
+		  box-sizing: border-box;
+		  -moz-box-sizing: border-box;
+		  height: 32px;
+		  outline: none;
+		  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+		}
+	
+		#pac-input {
+		  background-color: #fff;
+		  font-family: Roboto;
+		  font-size: 15px;
+		  font-weight: 300;
+		  margin-left: 12px;
+		  padding: 0 11px 0 13px;
+		  text-overflow: ellipsis;
+		  width: 300px;
+		}
+		
+		#pac-input:focus {
+		  border-color: #4d90fe;
+		}
+		
+		.pac-container {
+		  font-family: Roboto;
+		}
+		
+		#type-selector {
+		  color: #fff;
+		  background-color: #4d90fe;
+		  padding: 5px 11px 0px 11px;
+		}
+		
+		#type-selector label {
+		  font-family: Roboto;
+		  font-size: 13px;
+		  font-weight: 300;
+		}
+	</style>
 
 	<!--     Fonts and icons     -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
@@ -170,6 +214,8 @@
 							        <textarea name="daumeditor" id="daumeditor" rows="10" cols="100" style="display: none;"></textarea>
 								</div>
 							</div>
+						</div>
+						<input id="pac-input" class="controls" type="text" placeholder="Search Box">
 						</div>
 						<div id="map" style="width: 1140px; height: 400px; margin-right: 10px; margin-bottom: 5px;"></div>
 						<div>
