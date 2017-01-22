@@ -127,9 +127,7 @@ function myMap() {
 	};
 	
 	var map = new google.maps.Map(mapCanvas, mapOptions);
-	
-
-		var input = /** @type {HTMLInputElement} */
+	var input = /** @type {HTMLInputElement} */
 	(document.getElementById('pac-input'));
 
 	// Create the autocomplete helper, and associate it with

@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import purple.common.common.CommandMap;
+import purple.main.bo.UserBo;
+import purple.main.model.User;
 
 @Controller
 @RequestMapping("/main")
@@ -43,15 +47,23 @@ public class MainController {
 		
 		request.getSession().setAttribute("id", id);
 		request.getSession().setAttribute("nickname", nickname);
+	
+    	@SuppressWarnings("resource")
+		ApplicationContext appContext = new ClassPathXmlApplicationContext("spring/config/BeanLocations.xml");
+    	UserBo userBo = (UserBo)appContext.getBean("userBo");
+    	
+		User user = new User();
+		user.setId(id);
+		user.setNickname(nickname);
 		
-		Map<String, String> map = new HashMap<String, String>();
+		//User user2 = userBo.findByUserId(id);
+		//System.out.println(user2);
+		
+/*		Map<String, String> map = new HashMap<String, String>();
 		
 		map.put("id", id);
 		map.put("nickname", nickname);
-		
-		//commandMap.put("id", id);
-		//commandMap.put("nickname", nickname);
-		model.addAttribute("userInfo", map);
+		model.addAttribute("userInfo", map);*/
 		
 		return "main/main";
 	}

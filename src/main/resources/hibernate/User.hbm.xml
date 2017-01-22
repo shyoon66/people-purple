@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Generated 2017. 1. 22 ???? 5:43:59 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="purple.main.model.User" table="TB_USER_INFO">
+        <id name="oid" type="java.lang.Integer">
+            <column name="OID" />
+        	<generator class="assigned">
+        		<!-- <param name="sequence">SQ_USER_INFO</param> -->
+        	</generator>
+        </id>
+        <property name="id" type="java.lang.String">
+            <column name="ID" />
+        </property>
+        <property name="nickname" type="java.lang.String">
+            <column name="NICK_NAME" />
+        </property>
+        <property name="url" type="java.lang.String">
+            <column name="URL" />
+        </property>
+    </class>
+</hibernate-mapping>
