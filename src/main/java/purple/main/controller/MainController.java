@@ -1,15 +1,12 @@
 package purple.main.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,15 +14,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import purple.common.common.CommandMap;
-import purple.main.bo.UserBo;
-import purple.main.model.User;
+import purple.main.service.MainService;
 
 @Controller
 @RequestMapping("/main")
 public class MainController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
+	@Autowired(required = false)
+	private MainService mainService;
 	
+	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
+		
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(CommandMap commandMap, Model model) {
 		logger.info("Welcome home!");
@@ -34,9 +33,9 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "main", method = RequestMethod.GET)
-	public String main(@RequestParam(value = "id") String id, @RequestParam(value = "nickname") String nickname, HttpServletRequest request, CommandMap commandMap, Model model) {
+	public String main(@RequestParam(value = "id") String id, @RequestParam(value = "nickname") String nickname, HttpServletRequest request, Model model) {
 		try {
-			if(nickname != null){
+			if(nickname != null) {
 				nickname = new String(nickname.getBytes("8859_1"),"UTF-8"); // getBytes("8859_1") 
 			}
 		} catch (UnsupportedEncodingException e) {
@@ -47,23 +46,6 @@ public class MainController {
 		
 		request.getSession().setAttribute("id", id);
 		request.getSession().setAttribute("nickname", nickname);
-	
-    	@SuppressWarnings("resource")
-		ApplicationContext appContext = new ClassPathXmlApplicationContext("spring/config/BeanLocations.xml");
-    	UserBo userBo = (UserBo)appContext.getBean("userBo");
-    	
-		User user = new User();
-		user.setId(id);
-		user.setNickname(nickname);
-		
-		//User user2 = userBo.findByUserId(id);
-		//System.out.println(user2);
-		
-/*		Map<String, String> map = new HashMap<String, String>();
-		
-		map.put("id", id);
-		map.put("nickname", nickname);
-		model.addAttribute("userInfo", map);*/
 		
 		return "main/main";
 	}

@@ -160,6 +160,13 @@
 			<version>2.7.7</version>
 		</dependency>
 		<!-- Hibernate library dependecy end -->
+		
+		<!-- https://mvnrepository.com/artifact/com.github.jinahya/cubrid-jdbc-driver-9.3.6.0002 -->
+		<dependency>
+		    <groupId>com.github.jinahya</groupId>
+		    <artifactId>cubrid-jdbc-driver-9.3.6.0002</artifactId>
+		    <version>1.0.1</version>
+		</dependency>
 		     
 	</dependencies>
     <build>

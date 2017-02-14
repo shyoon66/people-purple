@@ -12,7 +12,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 import purple.common.common.CommandMap;
  
-public class CustomMapArgumentResolver implements HandlerMethodArgumentResolver{
+public class CustomMapArgumentResolver implements HandlerMethodArgumentResolver {
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         return CommandMap.class.isAssignableFrom(parameter.getParameterType());

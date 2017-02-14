@@ -1,26 +1,24 @@
-package purple.main.model;
+package purple.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tb_user_info")
 public class User implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private int oid;
+	@Id
 	private String id;
 	private String nickname;
 	private String url;
 	
 	public User() {
 		
-	}
-	
-	public int getOid() {
-		return oid;
-	}
-	
-	public void setOid(int oid) {
-		this.oid = oid;
 	}
 	
 	public String getId() {

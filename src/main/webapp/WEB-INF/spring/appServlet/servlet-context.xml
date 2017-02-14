@@ -14,7 +14,7 @@
 	
 	<default-servlet-handler /> 
 	
-	<annotation-driven>
+  	<annotation-driven>
     	<argument-resolvers>
             <beans:bean class="purple.common.resolver.CustomMapArgumentResolver"></beans:bean>       
         </argument-resolvers>
@@ -31,5 +31,6 @@
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
 	<context:component-scan base-package="purple" />
+	<context:annotation-config base-package="purple" />
 
 </beans:beans>
