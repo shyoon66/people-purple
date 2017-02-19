@@ -1,6 +1,6 @@
 package purple.main.dao;
 
-import purple.model.User;
+import purple.domain.User;
 
 public interface MainDao {
 	void saveUser(User user);

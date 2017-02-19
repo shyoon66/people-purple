@@ -1,6 +1,6 @@
 package purple.main.service;
 
-import purple.model.User;
+import purple.domain.User;
 
 public interface MainService {
 	void saveUser(User user);

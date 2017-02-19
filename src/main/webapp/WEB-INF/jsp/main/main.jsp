@@ -68,10 +68,10 @@
 		</button>
 		<div class="logo-container">
 			<div class="logo">
-				<img src="../resources/assets/img/logo.png" alt="Creative Tim Logo">
+				<img src="${user.url}" alt="Creative Tim Logo">
 			</div>
 			<div class="brand">
-			    ${userInfo.nickname}
+			    ${user.nick_name}
 			</div>
 			<button class="btn btn-primary" onclick="fnLogout();">로그아웃</button>
 			<script type='text/javascript'>

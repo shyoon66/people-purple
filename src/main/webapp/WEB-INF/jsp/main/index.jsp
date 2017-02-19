@@ -123,7 +123,9 @@
 												Kakao.API.request({
 													url: '/v1/user/me',
 													success: function(res) {
-														location.href = '/purple/main/main?id=' + res.id + '&nickname=' + res.properties.nickname;
+														//console.log(res);
+														//location.href = '/purple/main/main?id={0}&nickname={1}&url={2}'.format(res.id, res.properties.nickname, res.properties.thumbnail_image);
+														location.href = '/purple/main/main?id=' + res.id + '&nickname=' + res.properties.nickname + '&url=' + res.properties.thumbnail_image;
 													}
 												});
 											},

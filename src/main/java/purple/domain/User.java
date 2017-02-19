@@ -1,4 +1,4 @@
-package purple.model;
+package purple.domain;
 
 import java.io.Serializable;
 
@@ -14,11 +14,15 @@ public class User implements Serializable {
 	
 	@Id
 	private String id;
-	private String nickname;
+	private String nick_name;
 	private String url;
 	
-	public User() {
-		
+	public User() {}
+	
+	public User(String id, String nick_name, String url) {
+		this.id = id;
+		this.nick_name = nick_name;
+		this.url = url;
 	}
 	
 	public String getId() {
@@ -29,12 +33,12 @@ public class User implements Serializable {
 		this.id = id;
 	}
 	
-	public String getNickname() {
-		return nickname;
+	public String getNick_name() {
+		return nick_name;
 	}
 	
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setNick_name(String nick_name) {
+		this.nick_name = nick_name;
 	}
 	
 	public String getUrl() {
