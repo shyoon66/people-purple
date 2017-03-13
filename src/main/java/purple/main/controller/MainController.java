@@ -48,6 +48,7 @@ public class MainController {
 		//유저정보가 등록 되어 있는지 확인
 		User user = mainService.findUserById(id);
 		
+		//유저정보가 없으면 등록
 		if(user == null) {
 			user = new User(id, nickname, url);
 			mainService.saveUser(user);

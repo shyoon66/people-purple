@@ -11,28 +11,24 @@
 <script type="text/javascript" src="../resources/daumeditor/js/trex/jquery.form.js"></script>
 <script type="text/javascript">
 // <![CDATA[
-	$(function(){
-        $("#saveBtn").click(function(){
+	$(function() {
+        $("#saveBtn").click(function() {
             $("#frm").submit();
         });
         
         //ajax form submit
         $('#frm').ajaxForm({
-            beforeSubmit: function (data, form, option) {            	
+            beforeSubmit: function (data, form, option) {
             	console.log(data);
-            	console.log(form);
-            	console.log(option);
-            	
             	//validation체크 
                 //막기위해서는 return false를 잡아주면됨
                 return true;
             },
-            success: function(response, status){
-                alert("!!!!");
+            success: function(response, status) {
             	//성공후 서버에서 받은 데이터 처리
                 done(response);
             },
-            error: function(){
+            error: function() {
                 //에러발생을 위한 code페이지
                 alert("error!!");
             }                               
@@ -53,13 +49,13 @@
 	        'thumburl': fileInfo.thumburl */
        	};
         
-        //var response_object = $.parseJSON( response );
-        //console.log(response_object);
-        execAttach(_mockdata);
+        var response_object = $.parseJSON(response);
+        console.log(response_object);
+        execAttach(response_object);
         closeWindow();
     }
  
-    function initUploader(){
+    function initUploader() {
         var _opener = PopupUtil.getOpener();
         if (!_opener) {
             alert('잘못된 경로로 접근하셨습니다.');
