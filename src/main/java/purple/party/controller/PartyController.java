@@ -25,6 +25,7 @@ public class PartyController {
 		Map<String, String> map = new HashMap<String, String>();
 		
 		map.put("nickname", request.getSession().getAttribute("nickname").toString());
+		map.put("url", request.getSession().getAttribute("url").toString());
 		model.addAttribute("userInfo", map);
 	
 		return "party/partyInsert";

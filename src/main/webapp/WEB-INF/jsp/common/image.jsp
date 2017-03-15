@@ -19,7 +19,6 @@
         //ajax form submit
         $('#frm').ajaxForm({
             beforeSubmit: function (data, form, option) {
-            	console.log(data);
             	//validation체크 
                 //막기위해서는 return false를 잡아주면됨
                 return true;
@@ -41,17 +40,17 @@
         }
         
         var _mockdata = {
-	        'filename': response.filename,
-	        'filesize': 1024
-/* 	        'imageurl': fileInfo.imageurl,	        
-	        'imagealign': fileInfo.imagealign,
-	        'originalurl': fileInfo.originalurl,
-	        'thumburl': fileInfo.thumburl */
+	        'filename': response.map.filename,
+	        'filesize': response.map.filesize,
+ 	        'imageurl': response.map.filename,	        
+	        'imagealign': "C",
+	        'originalurl': response.map.filename,
+	        'thumburl': response.map.filename
        	};
         
-        var response_object = $.parseJSON(response);
-        console.log(response_object);
-        execAttach(response_object);
+        console.log(response.map);
+
+        execAttach(_mockdata);
         closeWindow();
     }
  

@@ -10,9 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
-import com.google.gson.Gson;
 
 import purple.common.common.CommandMap;
 
@@ -32,10 +31,10 @@ public class CommonController {
 	}
 	
 	@RequestMapping(value = "/uploadImage", method = RequestMethod.POST)
-	public String uploadImage(@RequestParam("file") MultipartFile file, CommandMap commandMap, Model model) {	
+	public @ResponseBody CommandMap uploadImage(@RequestParam("file") MultipartFile file, CommandMap commandMap, Model model) {	
 		try {       
             byte fileData[] = file.getBytes();
-            fos = new FileOutputStream(IMAGE_PATH + "/" + file.getOriginalFilename());          
+            fos = new FileOutputStream(IMAGE_PATH + "/" + System.currentTimeMillis() + "_" + file.getOriginalFilename());          
             fos.write(fileData);   
         } catch(Exception e) {      
             e.printStackTrace();           
@@ -51,12 +50,8 @@ public class CommonController {
 		
 		CommandMap cmdMap = new CommandMap();
 		cmdMap.put("filename", file.getOriginalFilename());
-		Gson gson = new Gson();
+		cmdMap.put("filesize", file.getSize());
 		
-		model.addAttribute("fileInfo", gson.toJson(cmdMap));
-/*		model.addAttribute("file2", file.getName());
-		model.addAttribute("file3", file.getName());
-		model.addAttribute("file4", file.getName());*/
-		return "common/image";
+		return cmdMap;
 	}
 }

@@ -104,7 +104,7 @@
 		</button>
 		<div class="logo-container">
 			<div class="logo">
-				<img src="../resources/assets/img/logo.png" alt="Creative Tim Logo">
+				<img src="${userInfo.url}" alt="Creative Tim Logo">
 			</div>
 			<div class="brand">
 			    ${userInfo.nickname}
