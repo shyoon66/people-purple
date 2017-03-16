@@ -39,16 +39,16 @@
             return;
         }
         
+        var url = location.protocol + "//" + location.host + "/purple/";
+        
         var _mockdata = {
 	        'filename': response.map.filename,
 	        'filesize': response.map.filesize,
- 	        'imageurl': response.map.filename,	        
-	        'imagealign': "C",
-	        'originalurl': response.map.filename,
-	        'thumburl': response.map.filename
+ 	        'imageurl': url + response.map.imageurl,	        
+	        'imagealign': response.map.imagealign,
+	        'originalurl': url + response.map.imageurl,
+	        'thumburl': url + response.map.imageurl
        	};
-        
-        console.log(response.map);
 
         execAttach(_mockdata);
         closeWindow();
