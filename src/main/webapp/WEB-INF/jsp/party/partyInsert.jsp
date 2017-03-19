@@ -4,90 +4,90 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-	<link rel="icon" type="image/png" href="assets/img/favicon.png">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta charset="utf-8" />
+<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>people-purple</title>
+<title>people-purple</title>
 
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+<style>
+	.controls {
+	  margin-top: 10px;
+	  border: 1px solid transparent;
+	  border-radius: 2px 0 0 2px;
+	  box-sizing: border-box;
+	  -moz-box-sizing: border-box;
+	  height: 32px;
+	  outline: none;
+	  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	}
+
+	#pac-input {
+	  background-color: #fff;
+	  font-family: Roboto;
+	  font-size: 15px;
+	  font-weight: 300;
+	  margin-left: 12px;
+	  padding: 0 11px 0 13px;
+	  text-overflow: ellipsis;
+	  width: 300px;
+	}
 	
-	<style>
-		.controls {
-		  margin-top: 10px;
-		  border: 1px solid transparent;
-		  border-radius: 2px 0 0 2px;
-		  box-sizing: border-box;
-		  -moz-box-sizing: border-box;
-		  height: 32px;
-		  outline: none;
-		  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-		}
+	#pac-input:focus {
+	  border-color: #4d90fe;
+	}
 	
-		#pac-input {
-		  background-color: #fff;
-		  font-family: Roboto;
-		  font-size: 15px;
-		  font-weight: 300;
-		  margin-left: 12px;
-		  padding: 0 11px 0 13px;
-		  text-overflow: ellipsis;
-		  width: 300px;
-		}
-		
-		#pac-input:focus {
-		  border-color: #4d90fe;
-		}
-		
-		.pac-container {
-		  font-family: Roboto;
-		}
-		
-		#type-selector {
-		  color: #fff;
-		  background-color: #4d90fe;
-		  padding: 5px 11px 0px 11px;
-		}
-		
-		#type-selector label {
-		  font-family: Roboto;
-		  font-size: 13px;
-		  font-weight: 300;
-		}
-	</style>
-
-	<!--     Fonts and icons     -->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-
-	<!-- CSS Files -->
-    <link href="../resources/assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../resources/assets/css/material-kit.css" rel="stylesheet"/>
-
-	<!-- CSS Just for demo purpose, don't include it in your project -->
-	<link href="../resources/assets/css/demo.css" rel="stylesheet" />
+	.pac-container {
+	  font-family: Roboto;
+	}
 	
-	<!-- daumeditor CSS -->
-	<link rel="stylesheet" href="../resources/daumeditor/css/editor.css" type="text/css"/>
+	#type-selector {
+	  color: #fff;
+	  background-color: #4d90fe;
+	  padding: 5px 11px 0px 11px;
+	}
 	
-	<!--   Core JS Files   -->
-	<script src="../resources/assets/js/jquery.min.js" type="text/javascript"></script>
-	<script src="../resources/assets/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="../resources/assets/js/material.min.js"></script>
-	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-	<script src="../resources/daumeditor/js/editor_loader.js" type="text/javascript"></script>
-	<script src="../resources/js/party/partyInsert.js"></script>
+	#type-selector label {
+	  font-family: Roboto;
+	  font-size: 13px;
+	  font-weight: 300;
+	}
+</style>
 
-	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-	<script src="../resources/assets/js/nouislider.min.js" type="text/javascript"></script>
+<!--     Fonts and icons     -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 
-	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
-	<script src="../resources/assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
+<!-- CSS Files -->
+<link href="../resources/assets/css/bootstrap.min.css" rel="stylesheet" />
+<link href="../resources/assets/css/material-kit.css" rel="stylesheet"/>
 
-	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
-	<script src="../resources/assets/js/material-kit.js" type="text/javascript"></script>
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link href="../resources/assets/css/demo.css" rel="stylesheet" />
+
+<!-- daumeditor CSS -->
+<link rel="stylesheet" href="../resources/daumeditor/css/editor.css" type="text/css"/>
+
+<!--   Core JS Files   -->
+<script src="../resources/assets/js/jquery.min.js" type="text/javascript"></script>
+<script src="../resources/assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../resources/assets/js/material.min.js"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src="../resources/daumeditor/js/editor_loader.js" type="text/javascript"></script>
+<script src="../resources/js/party/partyInsert.js"></script>
+
+<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+<script src="../resources/assets/js/nouislider.min.js" type="text/javascript"></script>
+
+<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
+<script src="../resources/assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
+
+<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
+<script src="../resources/assets/js/material-kit.js" type="text/javascript"></script>
 </head>
 
 <body class="tutorial-page">

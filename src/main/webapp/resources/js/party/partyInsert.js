@@ -88,6 +88,7 @@ function fnDaumEditorInit() {
 function validForm(editor) {
     var validator = new Trex.Validator();
     var content = editor.getContent();
+    
     if (!validator.exists(content)) {
         alert('내용을 입력하세요');
         return false;
@@ -142,6 +143,7 @@ function myMap() {
 	var marker = new google.maps.Marker({
 		map : map
 	});
+
 	google.maps.event.addListener(marker, 'click', function() {
 		infowindow.open(map, marker);
 	});
@@ -150,6 +152,7 @@ function myMap() {
 	// list of suggestions.
 	google.maps.event.addListener(autocomplete, 'place_changed', function() {
 		infowindow.close();
+		
 		var place = autocomplete.getPlace();
 		console.log(place);
 		if (!place.geometry) {
@@ -169,6 +172,7 @@ function myMap() {
 			placeId : place.place_id,
 			location : place.geometry.location
 		}));
+		
 		marker.setVisible(true);
 
 		var html = '<div>';
@@ -181,8 +185,7 @@ function myMap() {
 		
 		console.log(html);
 		
-		infowindow.setContent(html + '<div><strong>' + place.name + '</strong><br/>'
-				+ place.formatted_address + '</div>');
+		infowindow.setContent(html + '<div><strong>' + place.name + '</strong><br/>' + place.formatted_address + '</div>');
 		infowindow.open(map, marker);
 	});
 }
