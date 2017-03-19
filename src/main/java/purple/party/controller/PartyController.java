@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import purple.common.common.CommandMap;
+import purple.command.CommandMap;
 
 @Controller
 @RequestMapping("/party")

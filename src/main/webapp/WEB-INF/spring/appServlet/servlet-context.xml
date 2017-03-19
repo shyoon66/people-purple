@@ -33,7 +33,7 @@
 	
 	<annotation-driven>
     	<argument-resolvers>
-            <beans:bean class="purple.common.resolver.CustomMapArgumentResolver"></beans:bean>       
+            <beans:bean class="purple.command.resolver.CustomMapArgumentResolver"></beans:bean>       
         </argument-resolvers>
     </annotation-driven>
 

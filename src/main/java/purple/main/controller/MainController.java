@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import purple.common.common.CommandMap;
+import purple.command.CommandMap;
 import purple.domain.User;
 import purple.main.service.MainService;
 
@@ -21,10 +21,10 @@ import purple.main.service.MainService;
 @RequestMapping("/main")
 public class MainController {
 	
+	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
+	
 	@Resource(name="mainService")
 	private MainService mainService;
-	
-	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 		
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(CommandMap commandMap, Model model) {

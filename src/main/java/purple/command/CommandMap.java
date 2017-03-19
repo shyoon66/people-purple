@@ -1,4 +1,4 @@
-package purple.common.common;
+package purple.command;
 
 import java.util.HashMap;
 import java.util.Map;
