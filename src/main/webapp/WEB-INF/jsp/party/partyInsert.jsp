@@ -216,16 +216,15 @@
 							</div>
 						</div>
 						<input id="pac-input" class="controls" type="text" placeholder="Search Box">
-						</div>
 						<div id="map" style="width: 1140px; height: 400px; margin-right: 10px; margin-bottom: 5px;"></div>
 						<div>
-							<input type="button" id="save_button" class="btn btn-primary" value="저장"/>
+							<input type="button" id="save_button" class="btn btn-primary" value="저장" onclick="insertParty();"/>
 							<input type="button" id="cancle_btn" class="btn btn-primary" value="취소"/>
 						</div>
 					</form>
 				</div>
-		    </div>
-	<!-- 	</div> -->
+		    <!-- </div> -->
+		</div>
 	</div>
 </div>
 
@@ -271,6 +270,37 @@
         </div>
     </div>
 </footer>
+
+<!-- Modal Core -->
+<div class="modal fade" id="alert" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-info btn-simple">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="alert alert-danger">
+    <div class="container-fluid">
+	  <div class="alert-icon">
+	    <i class="material-icons">error_outline</i>
+	  </div>
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true"><i class="material-icons">clear</i></span>
+	  </button>
+      <b>Error Alert:</b> Damn man! You screwed up the server this time. You should find a good excuse for your Boss...
+    </div>
+</div>
 
 </body>
 </html>

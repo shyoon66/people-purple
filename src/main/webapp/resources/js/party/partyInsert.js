@@ -14,16 +14,16 @@ $(document).ready(function () {
 	fnDaumEditorInit();
      
     //form submit 버튼 클릭
-    $("#save_button").click(function() {
+/*    $("#save_button").click(function() {
         //다음에디터가 포함된 form submit
         Editor.save();
-    })
+    })*/
 });
 
 function fnDaumEditorInit() {
     $.ajax({
         url : "../resources/daumeditor/editor_frame.html",
-        success : function(data){
+        success : function(data) {
             $("#editor_frame").html(data);
             // 에디터UI load
             var config = {
@@ -188,4 +188,17 @@ function myMap() {
 		infowindow.setContent(html + '<div><strong>' + place.name + '</strong><br/>' + place.formatted_address + '</div>');
 		infowindow.open(map, marker);
 	});
+}
+
+function insertParty() {
+	validInsertParty();
+}
+
+function validInsertParty() {
+	if($('#email').val() == '') {
+		$('#myModalLabel').text('경고');
+		$('#modal-content .modal-body').text('이메일 주소를 입력해 주세요.');
+		$('#alert').addClass('in');
+		$('#alert').css('display: block; padding-right: 16px;');
+	}
 }
