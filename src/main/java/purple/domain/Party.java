@@ -17,6 +17,7 @@ public class Party implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="sq_party")
 	private long oid;
+	private String id;
 	private String nick_name;
 	private String email;
 	private String kind;
@@ -34,6 +35,14 @@ public class Party implements Serializable {
 	
 	public void setOid(long oid) {
 		this.oid = oid;
+	}
+	
+	public String id() {
+		return id;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	public String getNick_name() {
