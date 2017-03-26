@@ -12,6 +12,10 @@ $(document).ready(function () {
 	
 	fnGetStatus();
 	fnDaumEditorInit();
+	
+	$('.datepicker').datepicker({
+		weekStart:1
+	});
      
     //form submit 버튼 클릭
 /*    $("#save_button").click(function() {
@@ -190,15 +194,22 @@ function myMap() {
 	});
 }
 
+function openImagePopUp() {
+	window.open('../common/image', 'imagePopUp', 'width=350, height=300, left=250, top=65');
+}
+
+function setImageUrl(imageUrl) {
+	$('#upload_img img').attr('src', imageUrl);
+}
+
 function insertParty() {
 	validInsertParty();
 }
 
 function validInsertParty() {
 	if($('#email').val() == '') {
-		$('#myModalLabel').text('경고');
-		$('#modal-content .modal-body').text('이메일 주소를 입력해 주세요.');
-		$('#alert').addClass('in');
-		$('#alert').css('display: block; padding-right: 16px;');
+		$('#myModal .modal-body').text('이메일 주소를 입력해 주세요.');
+		$('#myModal').modal('show'); 
+		return;
 	}
 }

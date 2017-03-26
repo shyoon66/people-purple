@@ -55,6 +55,15 @@
 	  font-size: 13px;
 	  font-weight: 300;
 	}
+	
+	.image-container {
+		border: 1px solid;
+/* 		width: 400px;
+		height: 400px; */
+		cursor: pointer;
+		float: left;
+		width: 33%;
+	}
 </style>
 
 <!--     Fonts and icons     -->
@@ -144,19 +153,28 @@
 	        	<div class="content">
 					<form id="frm" name="frm" class="contact-form">
 						<div class="row">
-							<div class="col-md-2">
+							<div class="col-md-6">
 								<div class="form-group label-floating">
 									<label class="control-label">닉네임</label>
 									<input type="text" id="nickname" name="nickname" class="form-control" value="${userInfo.nickname}" readonly="readonly" />
 								</div>
 							</div>
-							<div class="col-md-4">
+							<div class="col-md-6">
 								<div class="form-group label-floating">
 									<label class="control-label">이메일 주소</label>
 									<input type="text" id="email" name="email" class="form-control">
 								</div>
 							</div>
-							<div class="col-md-2">
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group label-floating">
+									<label class="control-label">모임날짜</label>
+									<!-- markup -->
+									<input class="datepicker form-control" type="text" value=""/>
+								</div>
+							</div>
+							<div class="col-md-6">
 								<div class="form-group label-floating">
 									<label class="control-label">모임종류</label>
 									<select id="party_kind" name="party_kind" class="form-control">
@@ -167,7 +185,9 @@
 									</select>
 								</div>
 							</div>
-							<div class="col-md-2">
+						</div>
+						<div class="row">
+							<div class="col-md-6">
 								<div class="form-group label-floating">
 									<label class="control-label">지역</label>
 									<select id="party_kind" name="party_kind" class="form-control">
@@ -190,10 +210,10 @@
 									</select>
 								</div>
 							</div>
-							<div class="col-md-2">
+							<div class="col-md-6">
 								<div class="form-group label-floating">
 									<label class="control-label">인원수</label>
-									<input type="text" id="num_people" name="num_people" class="form-control" value="" />
+									<input type="number" id="num_people" name="num_people" class="form-control" min="2" />
 								</div>
 							</div>
 						</div>
@@ -208,10 +228,18 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group label-floating">
-							        <!-- 에디터프레임호출 영역 -->
-							        <div id="editor_frame"></div>
-							        <!-- 실제 값이 담겨져서 넘어갈 textarea 태그 -->
-							        <textarea name="daumeditor" id="daumeditor" rows="10" cols="100" style="display: none;"></textarea>
+									<label class="control-label">사진</label>
+									<div class="image-container" onclick="openImagePopUp();">사진등록</div>
+									<div class="image-container">사진등록</div>
+									<div class="image-container">사진등록</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group label-floating">
+									<label class="control-label">내용</label>
+									<textarea id="content" name="content" class="form-control" rows="10" cols="100"></textarea>
 								</div>
 							</div>
 						</div>
@@ -272,34 +300,19 @@
 </footer>
 
 <!-- Modal Core -->
-<div class="modal fade" id="alert" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-info btn-simple">Save</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="alert alert-danger">
-    <div class="container-fluid">
-	  <div class="alert-icon">
-	    <i class="material-icons">error_outline</i>
-	  </div>
-	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		<span aria-hidden="true"><i class="material-icons">clear</i></span>
-	  </button>
-      <b>Error Alert:</b> Damn man! You screwed up the server this time. You should find a good excuse for your Boss...
-    </div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">경고창</h4>
+			</div>
+			<div class="modal-body"></div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
 </div>
 
 </body>

@@ -56,6 +56,7 @@
         }
         
         var url = location.protocol + '//' + location.host + '/purple/';
+        var imageUrl = url + response.imageurl;
         
         var _mockdata = {
 	        'filename': response.filename,
@@ -66,8 +67,9 @@
 	        'thumburl': url + response.imageurl
        	};
 
-        execAttach(_mockdata);
-        //closeWindow();
+        opener.setImageUrl(imageUrl);
+        //execAttach(_mockdata);
+        closeWindow();
     }
  
     function initUploader() {
