@@ -71,6 +71,10 @@
 		margin-right: 10px;
 		margin-bottom: 5px;
 	}
+	
+	.datepicker {
+		z-index: 1151 !important;
+	}
 </style>
 
 <!--     Fonts and icons     -->
@@ -91,25 +95,33 @@
 <!-- daumeditor CSS -->
 <link rel="stylesheet" href="../resources/daumeditor/css/editor.css" type="text/css"/>
 
+<!-- CSS Datepicker -->
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet" /> -->
+<!-- <link href="../resources/assets/css/bootstrap-datepicker.css" rel="stylesheet" /> -->
+
 <!--   Core JS Files   -->
 <script src="../resources/assets/js/jquery.min.js" type="text/javascript"></script>
 <script src="../resources/assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="../resources/assets/js/material.min.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="../resources/daumeditor/js/editor_loader.js" type="text/javascript"></script>
-<script src="../resources/js/party/partyInsert.js"></script>
 
 <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
 <script src="../resources/assets/js/nouislider.min.js" type="text/javascript"></script>
 
-<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
+<!--  Plugin for the Datepicker -->
 <script src="../resources/assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.ko.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script> -->
 
 <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 <script src="../resources/assets/js/material-kit.js" type="text/javascript"></script>
 
 <!-- dropzone -->
 <script src="../resources/dropzone/js/dropzone.js" type="text/javascript"></script>
+
+<script src="../resources/js/party/partyInsert.js"></script>
 </head>
 
 <body class="tutorial-page">
@@ -175,7 +187,7 @@
 							<div class="col-md-6">
 								<div class="form-group label-floating">
 									<label class="control-label">이메일 주소</label>
-									<input type="text" id="email" name="email" class="form-control" value="" />
+									<input type="text" id="email" name="email" class="form-control" value="yoosh2002@hanmail.net" />
 								</div>
 							</div>
 						</div>
@@ -183,7 +195,7 @@
 							<div class="col-md-6">
 								<div class="form-group label-floating">
 									<label class="control-label">모임날짜</label>
-									<input type="text" id="date" name="date" class="datepicker form-control" value="" data-date-format="yyyy-mm-dd" />
+									<input type="text" id="date" name="date" class="form-control" />
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -199,6 +211,12 @@
 							</div>
 						</div>
 						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group label-floating">
+									<label class="control-label">인원수</label>
+									<input type="number" id="num_people" name="num_people" class="form-control" min="2" />
+								</div>
+							</div>
 							<div class="col-md-6">
 								<div class="form-group label-floating">
 									<label class="control-label">지역</label>
@@ -219,13 +237,8 @@
 										<option value="gyeongsangbuk">경상북도</option>
 										<option value="gyeongsangnam">경상남도</option>
 										<option value="jeju">제주도</option>
+										<option value="overseas">해외</option>
 									</select>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group label-floating">
-									<label class="control-label">인원수</label>
-									<input type="number" id="num_people" name="num_people" class="form-control" min="2" />
 								</div>
 							</div>
 						</div>
@@ -233,7 +246,7 @@
 							<div class="col-md-12">
 								<div class="form-group label-floating">
 									<label class="control-label">제목</label>
-									<input type="text" id="title" name="title" class="form-control" />
+									<input type="text" id="title" name="title" value="test입니다." class="form-control" />
 								</div>
 							</div>
 						</div>
@@ -249,7 +262,7 @@
 							<div class="col-md-12">
 								<div class="form-group label-floating">
 									<label class="control-label">내용</label>
-									<textarea id="content" name="content" class="form-control" rows="10" cols="100"></textarea>
+									<textarea id="contents" name="contents" class="form-control" rows="10" cols="100">테스트입니다.</textarea>
 								</div>
 							</div>
 						</div>

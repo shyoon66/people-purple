@@ -43,19 +43,17 @@ function datepicker() {
 	var today = nowTemp.toISOString().substr(0, 10).replace('T', ' ');
 	
 	$('#date').val(today);
+	$('#date').parent('div').removeClass('is-empty');
 	
 	var date = $('#date').datepicker({
-		weekStart: 1,
-		language: 'kr',
+		format: 'yyyy-mm-dd',
 		onRender: function(date) {
 			return date.valueOf() < now.valueOf() ? 'disabled' : '';
 		}
-	}).on('changeDate', function(e) {
+	}).on('changeDate', function(ev) {
 		date.hide();
-	}).on('hide', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-    }).data('datepicker');
+		$(this).parent('div').removeClass('is-empty');
+	}).data('datepicker');
 }
 
 function fnDaumEditorInit() {
@@ -228,6 +226,7 @@ function setImageUrl(imageUrl) {
 
 function insertParty() {
 	validInsertParty();
+	insertPartyProc();
 }
 
 function validInsertParty() {
@@ -254,4 +253,9 @@ function validInsertParty() {
 		$('#myModal').modal('show'); 
 		return;
 	}
+}
+
+function insertPartyProc() {
+	var params = $('#frm').serialize();
+	console.log(params);
 }
