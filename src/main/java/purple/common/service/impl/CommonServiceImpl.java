@@ -17,13 +17,16 @@ public class CommonServiceImpl implements CommonService {
 	private static final Logger logger = LoggerFactory.getLogger(CommonController.class);
 	
 	public void validImageFile(String filename_extension, String content_type, long imageSize) throws Exception {		
-		if((!"png".equals(filename_extension) && !"PNG".equals(filename_extension) && !"jpeg".equals(filename_extension) && !"JPEG".equals(filename_extension) && !"gif".equals(filename_extension) && !"GIF".equals(filename_extension))
-        		|| (content_type.indexOf("image") < 0)) {
-			throw new Exception("이미지 파일만 업로드 가능합니다.");
-        }
+		String[] extensionArr = {"jpeg", "jpg", "png", "gif", "JPEG", "JPG", "PNG", "GIF"};
 		
-		if(imageSize > 10486000) {
-			throw new Exception("용량이 10MB 이하만 업로드 가능합니다.");
+		for(int i = 0; i < extensionArr.length; i++) {
+			if(!extensionArr[i].equals(filename_extension)) {
+				throw new Exception("이미지 파일만 업로드 가능합니다.");
+			}
+		}
+		
+		if(imageSize > 20972000) {
+			throw new Exception("용량이 20MB 이하만 업로드 가능합니다.");
 		}
 	}
 	

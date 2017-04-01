@@ -34,10 +34,10 @@ public class CommonController {
 	@RequestMapping(value = "/uploadImage", method = RequestMethod.POST)
 	public @ResponseBody ImageFile uploadImage(@RequestParam("file") MultipartFile file, CommandMap commandMap, Model model, HttpServletRequest request) throws Exception {	
     	// 이미지 파일인지 체크
-		String filename_extension = file.getOriginalFilename().split("\\.")[1];
+/*		String filename_extension = file.getOriginalFilename().split("\\.")[1];
     	String content_type = file.getContentType();
     	long imageSize = file.getSize();
-    	commonService.validImageFile(filename_extension, content_type, imageSize);
+    	commonService.validImageFile(filename_extension, content_type, imageSize);*/
     	
     	// 이미지 파일 업로드
 		String root_path = request.getSession().getServletContext().getRealPath("/");  

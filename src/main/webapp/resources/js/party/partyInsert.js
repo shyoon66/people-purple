@@ -11,11 +11,13 @@ $(document).ready(function () {
 	Kakao.init('a05ee4a95a2c2df4b1da1b7e43af8096');
 	
 	fnGetStatus();
-	fnDaumEditorInit();
+	//fnDaumEditorInit();
 	
-	$('.datepicker').datepicker({
+/*	$('.datepicker').datepicker({
 		weekStart:1
-	});
+	});*/
+	
+	dropzoneInit();
      
     //form submit 버튼 클릭
 /*    $("#save_button").click(function() {
@@ -23,6 +25,28 @@ $(document).ready(function () {
         Editor.save();
     })*/
 });
+
+function dropzoneInit() {
+	$('div#dropzone-image').dropzone({
+		url: '/purple/common/uploadImage',
+        addRemoveLinks: true,
+        maxFiles: 5,
+        uploadMultiple: false,
+        maxFilesize: 20,
+        method: 'post',
+        acceptedFiles: ".jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF",
+        clickable: true,
+        init: function () {
+        	this.on('maxfilesexceeded', function (data) {
+        		$('#myModal .modal-body').text('최대 업로드 파일 수는 5개 입니다.');
+        		$('#myModal').modal('show'); 
+            });
+        	this.on('complete', function (data) {
+        		console.log(data);
+        	});
+        }
+	});
+}
 
 function fnDaumEditorInit() {
     $.ajax({

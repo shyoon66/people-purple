@@ -78,6 +78,9 @@
 <!-- CSS Just for demo purpose, don't include it in your project -->
 <link href="../resources/assets/css/demo.css" rel="stylesheet" />
 
+<!-- CSS dropzone -->
+<link href="../resources/dropzone/css/dropzone.css" rel="stylesheet" />
+
 <!-- daumeditor CSS -->
 <link rel="stylesheet" href="../resources/daumeditor/css/editor.css" type="text/css"/>
 
@@ -97,6 +100,9 @@
 
 <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 <script src="../resources/assets/js/material-kit.js" type="text/javascript"></script>
+
+<!-- dropzone -->
+<script src="../resources/dropzone/js/dropzone.js" type="text/javascript"></script>
 </head>
 
 <body class="tutorial-page">
@@ -229,9 +235,7 @@
 							<div class="col-md-12">
 								<div class="form-group label-floating">
 									<label class="control-label">사진</label>
-									<div class="image-container" onclick="openImagePopUp();">사진등록</div>
-									<div class="image-container">사진등록</div>
-									<div class="image-container">사진등록</div>
+									<div id="dropzone-image" class="dropzone needsclick dz-clickable dz-message"></div>
 								</div>
 							</div>
 						</div>
