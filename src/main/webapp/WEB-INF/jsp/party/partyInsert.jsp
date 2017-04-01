@@ -64,6 +64,13 @@
 		float: left;
 		width: 33%;
 	}
+	
+	.google-map {
+		width: 1140px;
+		height: 400px;
+		margin-right: 10px;
+		margin-bottom: 5px;
+	}
 </style>
 
 <!--     Fonts and icons     -->
@@ -168,7 +175,7 @@
 							<div class="col-md-6">
 								<div class="form-group label-floating">
 									<label class="control-label">이메일 주소</label>
-									<input type="text" id="email" name="email" class="form-control">
+									<input type="text" id="email" name="email" class="form-control" value="" />
 								</div>
 							</div>
 						</div>
@@ -176,8 +183,7 @@
 							<div class="col-md-6">
 								<div class="form-group label-floating">
 									<label class="control-label">모임날짜</label>
-									<!-- markup -->
-									<input class="datepicker form-control" type="text" value=""/>
+									<input type="text" id="date" name="date" class="datepicker form-control" value="" data-date-format="yyyy-mm-dd" />
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -227,7 +233,7 @@
 							<div class="col-md-12">
 								<div class="form-group label-floating">
 									<label class="control-label">제목</label>
-									<input type="text" id="title" name="title" class="form-control" value="" />
+									<input type="text" id="title" name="title" class="form-control" />
 								</div>
 							</div>
 						</div>
@@ -235,7 +241,7 @@
 							<div class="col-md-12">
 								<div class="form-group label-floating">
 									<label class="control-label">사진</label>
-									<div id="dropzone-image" class="dropzone needsclick dz-clickable dz-message"></div>
+									<div id="image" class="dropzone needsclick dz-clickable dz-message"></div>
 								</div>
 							</div>
 						</div>
@@ -248,7 +254,7 @@
 							</div>
 						</div>
 						<input id="pac-input" class="controls" type="text" placeholder="Search Box">
-						<div id="map" style="width: 1140px; height: 400px; margin-right: 10px; margin-bottom: 5px;"></div>
+						<div id="map" class="google-map"></div>
 						<div>
 							<input type="button" id="save_button" class="btn btn-primary" value="저장" onclick="insertParty();"/>
 							<input type="button" id="cancle_btn" class="btn btn-primary" value="취소"/>

@@ -4,30 +4,19 @@ googleMap.charset = 'utf-8';
 
 document.getElementsByTagName('head')[0].appendChild(googleMap);
 
-$(document).ready(function () {
+$(document).ready(function() {
 	$(window).on('scroll', materialKit.checkScrollForTransparentNavbar);
 	
 	// 사용할 앱의 JavaScript 키를 설정해 주세요.
 	Kakao.init('a05ee4a95a2c2df4b1da1b7e43af8096');
 	
 	fnGetStatus();
-	//fnDaumEditorInit();
-	
-/*	$('.datepicker').datepicker({
-		weekStart:1
-	});*/
-	
-	dropzoneInit();
-     
-    //form submit 버튼 클릭
-/*    $("#save_button").click(function() {
-        //다음에디터가 포함된 form submit
-        Editor.save();
-    })*/
+	dropzone();
+	datepicker();
 });
 
-function dropzoneInit() {
-	$('div#dropzone-image').dropzone({
+function dropzone() {
+	$('div#image').dropzone({
 		url: '/purple/common/uploadImage',
         addRemoveLinks: true,
         maxFiles: 5,
@@ -46,6 +35,27 @@ function dropzoneInit() {
         	});
         }
 	});
+}
+
+function datepicker() {	
+	var nowTemp = new Date();
+	var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+	var today = nowTemp.toISOString().substr(0, 10).replace('T', ' ');
+	
+	$('#date').val(today);
+	
+	var date = $('#date').datepicker({
+		weekStart: 1,
+		language: 'kr',
+		onRender: function(date) {
+			return date.valueOf() < now.valueOf() ? 'disabled' : '';
+		}
+	}).on('changeDate', function(e) {
+		date.hide();
+	}).on('hide', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }).data('datepicker');
 }
 
 function fnDaumEditorInit() {
@@ -134,22 +144,22 @@ function setForm(editor) {
 
 function fnGetStatus() {
 	Kakao.Auth.getStatus(function(statusObj) {
-		if(statusObj.status == "not_connected") {
-			alert("잘못된 접근입니다.");
-			location.href = "http://localhost:8080/purple/main/";
+		if(statusObj.status == 'not_connected') {
+			alert('잘못된 접근입니다.');
+			location.href = 'http://localhost:8080/purple/main/';
 		}
 	});	
 }
 
 function fnLogout() {
 	Kakao.Auth.logout(function() {
-		location.href = "http://localhost:8080/purple/main/";
+		location.href = 'http://localhost:8080/purple/main/';
 	});
 }
 
 function myMap() {
 	var myLatLng = {lat: 37.250943, lng: 127.028344};
-	var mapCanvas = document.getElementById("map");
+	var mapCanvas = document.getElementById('map');
 	var mapOptions = {
 		zoom: 10,
 		center: myLatLng,
@@ -201,19 +211,9 @@ function myMap() {
 			location : place.geometry.location
 		}));
 		
+		var html = '<div><strong>' + place.name + '</strong><br/>' + place.formatted_address + '</div>';	
+		infowindow.setContent(html);
 		marker.setVisible(true);
-
-		var html = '<div>';
-		
-		if(place.photos != undefined) {
-			html += place.photos[0].html_attributions[0];
-		}
-		
-		html += '</div>';
-		
-		console.log(html);
-		
-		infowindow.setContent(html + '<div><strong>' + place.name + '</strong><br/>' + place.formatted_address + '</div>');
 		infowindow.open(map, marker);
 	});
 }
@@ -233,6 +233,24 @@ function insertParty() {
 function validInsertParty() {
 	if($('#email').val() == '') {
 		$('#myModal .modal-body').text('이메일 주소를 입력해 주세요.');
+		$('#myModal').modal('show'); 
+		return;
+	}
+	
+	if($('#num_people').val() == '') {
+		$('#myModal .modal-body').text('인원수를 입력해 주세요.');
+		$('#myModal').modal('show'); 
+		return;
+	}
+	
+	if($('#title').val() == '') {
+		$('#myModal .modal-body').text('제목을 입력해 주세요.');
+		$('#myModal').modal('show'); 
+		return;
+	}
+	
+	if($('#content').val() == '') {
+		$('#myModal .modal-body').text('내용을 입력해 주세요.');
 		$('#myModal').modal('show'); 
 		return;
 	}
