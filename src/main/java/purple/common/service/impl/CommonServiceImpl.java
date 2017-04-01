@@ -25,19 +25,19 @@ public class CommonServiceImpl implements CommonService {
 			}
 		}
 		
-		if(imageSize > 20972000) {
-			throw new Exception("용량이 20MB 이하만 업로드 가능합니다.");
+		if(imageSize > 10486000) {
+			throw new Exception("용량이 10MB 이하만 업로드 가능합니다.");
 		}
 	}
 	
-	public ImageFile uploadImageFile(MultipartFile file, String upload_path, String imageUrl) throws Exception {
+	public ImageFile uploadImageFile(MultipartFile file, String upload_path, String imageUrl, String rename) throws Exception {
 		if(!file.isEmpty()) {
 	        file.transferTo(new File(upload_path));
 		}
 		
 		ImageFile imageFile = new ImageFile();
 		
-		imageFile.setFilename(file.getOriginalFilename());
+		imageFile.setFilename(rename);
 		imageFile.setFilesize(file.getSize());
 		imageFile.setImageurl(imageUrl);
 		imageFile.setImagealign("C");

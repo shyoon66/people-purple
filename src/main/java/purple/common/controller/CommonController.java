@@ -46,7 +46,7 @@ public class CommonController {
         String upload_path = root_path + "/" + attach_path + rename;
         String imageUrl = attach_path + rename;
         
-        ImageFile imageFile = commonService.uploadImageFile(file, upload_path, imageUrl);
+        ImageFile imageFile = commonService.uploadImageFile(file, upload_path, imageUrl, rename);
 		
         return imageFile;
 	}

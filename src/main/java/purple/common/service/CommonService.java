@@ -6,5 +6,5 @@ import purple.domain.ImageFile;
 
 public interface CommonService {
 	void validImageFile(String filename_extension, String content_type, long imageSize) throws Exception;
-	ImageFile uploadImageFile(MultipartFile file, String upload_path, String imageUrl) throws Exception;
+	ImageFile uploadImageFile(MultipartFile file, String upload_path, String imageUrl, String rename) throws Exception;
 }

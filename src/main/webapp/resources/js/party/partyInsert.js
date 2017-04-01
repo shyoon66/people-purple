@@ -4,6 +4,9 @@ googleMap.charset = 'utf-8';
 
 document.getElementsByTagName('head')[0].appendChild(googleMap);
 
+var _filenames = [];
+var _coordinates = new Array(2);
+
 $(document).ready(function() {
 	$(window).on('scroll', materialKit.checkScrollForTransparentNavbar);
 	
@@ -18,20 +21,51 @@ $(document).ready(function() {
 function dropzone() {
 	$('div#image').dropzone({
 		url: '/purple/common/uploadImage',
-        addRemoveLinks: true,
+        addRemoveLinks: false,
         maxFiles: 5,
         uploadMultiple: false,
-        maxFilesize: 20,
+        maxFilesize: 10,
         method: 'post',
-        acceptedFiles: ".jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF",
+        acceptedFiles: "image/*",
         clickable: true,
         init: function () {
-        	this.on('maxfilesexceeded', function (data) {
+        	this.on('maxfilesexceeded', function(file) {
         		$('#myModal .modal-body').text('최대 업로드 파일 수는 5개 입니다.');
-        		$('#myModal').modal('show'); 
+        		$('#myModal').modal('show');
+        		this.removeFile(file);
             });
+        	this.on('addedfile', function(file) {
+        		// Create the remove button
+				var removeButton = Dropzone.createElement('<div style="text-align: center;"><button class="btn btn-danger btn-xs" style="cursor: pointer;">Remove file</button></div>');
+
+				// Capture the Dropzone instance as closure.
+				var _this = this;
+
+				// Listen to the click event
+				removeButton.addEventListener("click", function(e) {
+					// Make sure the button click doesn't submit the
+					// form:
+					e.preventDefault();
+					e.stopPropagation();
+	
+					// Remove the file preview.
+					_this.removeFile(file);
+					// If you want to the delete the file on the server
+					// as well,
+					// you can do the AJAX request here.
+				});
+
+				// Add the button to the file preview element.
+				file.previewElement.appendChild(removeButton);
+        	});
+        	this.on('success', function(file, responseText) {
+        		// Handle the responseText here. For example, add the text to
+				// the preview element:
+        	    //console.log(responseText);
+        	    _filenames.push(responseText.filename);
+        	});
         	this.on('complete', function (data) {
-        		console.log(data);
+        		//console.log(data);
         	});
         }
 	});
@@ -156,10 +190,10 @@ function fnLogout() {
 }
 
 function myMap() {
-	var myLatLng = {lat: 37.250943, lng: 127.028344};
+	var myLatLng = {lat: 36.250943, lng: 127.028344};
 	var mapCanvas = document.getElementById('map');
 	var mapOptions = {
-		zoom: 10,
+		zoom: 7,
 		center: myLatLng,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
@@ -190,7 +224,7 @@ function myMap() {
 		infowindow.close();
 		
 		var place = autocomplete.getPlace();
-		console.log(place);
+
 		if (!place.geometry) {
 			return;
 		}
@@ -213,6 +247,10 @@ function myMap() {
 		infowindow.setContent(html);
 		marker.setVisible(true);
 		infowindow.open(map, marker);
+		
+		
+		_coordinates.push(place.geometry.location.lat());
+		_coordinates.push(place.geometry.location.lng());
 	});
 }
 
@@ -256,6 +294,6 @@ function validInsertParty() {
 }
 
 function insertPartyProc() {
-	var params = $('#frm').serialize();
-	console.log(params);
+	var filenames = JSON.stringify(_filenames);
+	var coordinates = JSON.stringify(_coordinates);
 }
