@@ -1,8 +1,11 @@
 package purple.common.controller;
 
+import java.io.File;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -49,5 +52,18 @@ public class CommonController {
         ImageFile imageFile = commonService.uploadImageFile(file, upload_path, imageUrl, rename);
 		
         return imageFile;
+	}
+	
+	@RequestMapping(value = "/removeImage", method = RequestMethod.POST)
+	public String removeImage(@RequestParam("file_name") String fileName, CommandMap commandMap, Model model, HttpServletRequest request) throws Exception {	
+		logger.info("@@@@@@@@@@@ fileName = " + fileName);
+		String root_path = request.getSession().getServletContext().getRealPath("/");  
+		String attach_path = "resources/upload_image/";
+		String image_path = root_path + "/" + attach_path + fileName;
+		
+		File file = new File(image_path);
+		FileUtils.deleteQuietly((File) file);
+	
+		return "party/partyInsert";
 	}
 }

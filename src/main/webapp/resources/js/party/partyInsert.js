@@ -26,8 +26,9 @@ function dropzone() {
         uploadMultiple: false,
         maxFilesize: 10,
         method: 'post',
-        acceptedFiles: "image/*",
+        acceptedFiles: 'image/*',
         clickable: true,
+        dictDefaultMessage: '이미지를 올려주세요',
         init: function () {
         	this.on('maxfilesexceeded', function(file) {
         		$('#myModal .modal-body').text('최대 업로드 파일 수는 5개 입니다.');
@@ -36,23 +37,29 @@ function dropzone() {
             });
         	this.on('addedfile', function(file) {
         		// Create the remove button
-				var removeButton = Dropzone.createElement('<div style="text-align: center;"><button class="btn btn-danger btn-xs" style="cursor: pointer;">Remove file</button></div>');
-
+        		var html = '<div style="text-align: center;"><button id="' + file.name.split('.')[0] + '_' + _filenames.length + '" class="btn btn-danger btn-xs" style="cursor: pointer;">Remove file</button></div>';
+				var removeButton = Dropzone.createElement(html);
 				// Capture the Dropzone instance as closure.
 				var _this = this;
 
 				// Listen to the click event
-				removeButton.addEventListener("click", function(e) {
+				removeButton.addEventListener('click', function(e) {
 					// Make sure the button click doesn't submit the
 					// form:
 					e.preventDefault();
 					e.stopPropagation();
-	
 					// Remove the file preview.
 					_this.removeFile(file);
+					
 					// If you want to the delete the file on the server
 					// as well,
 					// you can do the AJAX request here.
+					var url = '/purple/common/removeImage';
+					var index = e.target.id.split('_')[1];
+					var file_name = _filenames[index];
+					var params = { file_name : file_name };
+					
+					$.post(url, params);
 				});
 
 				// Add the button to the file preview element.
@@ -64,7 +71,7 @@ function dropzone() {
         	    //console.log(responseText);
         	    _filenames.push(responseText.filename);
         	});
-        	this.on('complete', function (data) {
+        	this.on('complete', function(file) {
         		//console.log(data);
         	});
         }
