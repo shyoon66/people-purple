@@ -60,6 +60,7 @@ function dropzone() {
 					var params = { file_name : file_name };
 					
 					$.post(url, params);
+					_filenames.splice(index, 1);
 				});
 
 				// Add the button to the file preview element.
@@ -256,8 +257,8 @@ function myMap() {
 		infowindow.open(map, marker);
 		
 		
-		_coordinates.push(place.geometry.location.lat());
-		_coordinates.push(place.geometry.location.lng());
+		_coordinates[0] = place.geometry.location.lat();
+		_coordinates[1] = place.geometry.location.lng();
 	});
 }
 
@@ -271,12 +272,11 @@ function setImageUrl(imageUrl) {
 
 function insertParty() {
 	validInsertParty();
-	insertPartyProc();
 }
 
 function validInsertParty() {
-	if($('#email').val() == '') {
-		$('#myModal .modal-body').text('이메일 주소를 입력해 주세요.');
+	if($('#sns_id').val() == '') {
+		$('#myModal .modal-body').text('SNS 아이디를 입력해주세요.');
 		$('#myModal').modal('show'); 
 		return;
 	}
@@ -298,9 +298,34 @@ function validInsertParty() {
 		$('#myModal').modal('show'); 
 		return;
 	}
+	
+	insertPartyProc();
 }
 
 function insertPartyProc() {
-	var filenames = JSON.stringify(_filenames);
 	var coordinates = JSON.stringify(_coordinates);
+	var filenames = JSON.stringify(_filenames);
+	var params = {
+		nick_name : $('#nickname').val(),
+		sns_id : $('#sns_id').val(),
+		kind : $('#party_kind').val(),
+		location : $('#location').val(),
+		total_number : $('#num_people').val(),
+		title : $('#title').val(),
+		contents : $('#contents').val(),
+		coordinates : coordinates,
+		file_names : filenames
+	};
+	var url = '/purple/party/insertPartyProc';
+
+	console.log(filenames);
+	$.post(url, params, function(data) {
+		$('#myModal .modal-body').text('모임 등록이 성공했습니다.');
+		$('#myModal').modal('show');
+		
+		var id = "${userInfo.id}";
+		var nickname = "${userInfo.nickname}";
+		var url = "${userInfo.url}";
+		//location.href = '/purple/main/main?id=' + id + '&nickname=' + nickname + '&url=' + url;
+	});
 }

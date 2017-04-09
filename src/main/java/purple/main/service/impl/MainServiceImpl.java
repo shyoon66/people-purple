@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import purple.common.controller.CommonController;
 import purple.domain.User;
 import purple.main.dao.MainDao;
 import purple.main.service.MainService;
@@ -16,7 +15,7 @@ import purple.main.service.MainService;
 @Transactional
 public class MainServiceImpl implements MainService {
 	
-	private static final Logger logger = LoggerFactory.getLogger(CommonController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MainServiceImpl.class);
 	
 	@Resource(name="mainDao")
 	private MainDao mainDao;

@@ -69,6 +69,7 @@
 		<beans:property name="annotatedClasses">
 			<beans:list>
 				<beans:value>purple.domain.User</beans:value>
+				<beans:value>purple.domain.Party</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
@@ -84,6 +85,9 @@
   	<!-- <beans:bean id="mainService" class="purple.main.service.impl.MainServiceImpl" /> -->
 		
   	<beans:bean id="mainDao" class="purple.main.dao.impl.MainDaoImpl">
+		<beans:property name="sessionFactory" ref="sessionFactory" />
+	</beans:bean>
+  	<beans:bean id="partyDao" class="purple.party.dao.impl.PartyDaoImpl">
 		<beans:property name="sessionFactory" ref="sessionFactory" />
 	</beans:bean>
 </beans:beans>

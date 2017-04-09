@@ -186,8 +186,8 @@
 							</div>
 							<div class="col-md-6">
 								<div class="form-group label-floating">
-									<label class="control-label">이메일 주소</label>
-									<input type="text" id="email" name="email" class="form-control" value="yoosh2002@hanmail.net" />
+									<label class="control-label">SNS 아이디</label>
+									<input type="text" id="sns_id" name="sns_id" class="form-control" value="yoosh2002@hanmail.net" />
 								</div>
 							</div>
 						</div>
@@ -214,13 +214,13 @@
 							<div class="col-md-6">
 								<div class="form-group label-floating">
 									<label class="control-label">인원수</label>
-									<input type="number" id="num_people" name="num_people" class="form-control" min="2" />
+									<input type="number" id="num_people" name="num_people" class="form-control" min="2" value="2" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group label-floating">
 									<label class="control-label">지역</label>
-									<select id="party_kind" name="party_kind" class="form-control">
+									<select id="location" name="location" class="form-control">
 										<option value="seoul">서울</option>
 										<option value="incheon">인천</option>
 										<option value="daejeon">대전</option>
