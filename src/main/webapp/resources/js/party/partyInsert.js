@@ -305,6 +305,7 @@ function validInsertParty() {
 function insertPartyProc() {
 	var coordinates = JSON.stringify(_coordinates);
 	var filenames = JSON.stringify(_filenames);
+	var url = '/purple/party/insertPartyProc';
 	var params = {
 		nick_name : $('#nickname').val(),
 		sns_id : $('#sns_id').val(),
@@ -316,16 +317,13 @@ function insertPartyProc() {
 		coordinates : coordinates,
 		file_names : filenames
 	};
-	var url = '/purple/party/insertPartyProc';
 
-	console.log(filenames);
 	$.post(url, params, function(data) {
 		$('#myModal .modal-body').text('모임 등록이 성공했습니다.');
 		$('#myModal').modal('show');
 		
-		var id = "${userInfo.id}";
-		var nickname = "${userInfo.nickname}";
-		var url = "${userInfo.url}";
-		//location.href = '/purple/main/main?id=' + id + '&nickname=' + nickname + '&url=' + url;
+		if(!$('#myModal').is(':visible')) {
+			location.href = '/purple/main/main';
+		}
 	});
 }

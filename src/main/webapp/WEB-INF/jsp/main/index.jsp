@@ -123,9 +123,17 @@
 												Kakao.API.request({
 													url: '/v1/user/me',
 													success: function(res) {
-														//console.log(res);
-														//location.href = '/purple/main/main?id={0}&nickname={1}&url={2}'.format(res.id, res.properties.nickname, res.properties.thumbnail_image);
-														location.href = '/purple/main/main?id=' + res.id + '&nickname=' + res.properties.nickname + '&url=' + res.properties.thumbnail_image;
+														var url = '/purple/main/insertUserProc';
+														var params = {
+															id : res.id,
+															nick_name : res.properties.nickname,
+															url : res.properties.thumbnail_image
+														};
+														
+														$.post(url, params, function(data) {
+															location.href = '/purple/main/main';
+														});
+														//location.href = '/purple/main/main?id=' + res.id + '&nickname=' + res.properties.nickname + '&url=' + res.properties.thumbnail_image;
 													}
 												});
 											},
