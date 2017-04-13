@@ -332,7 +332,7 @@
 			</div>
 			<div class="modal-body"></div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Close</button>
+				<button id="closeBtn" type="button" class="btn btn-default btn-simple" data-dismiss="modal">Close</button>
 			</div>
 		</div>
 	</div>
